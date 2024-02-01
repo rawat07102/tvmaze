@@ -1,5 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../features/home/Home.page";
+import HomePage from "../features/home/Home.page"
 import axios from "axios";
 import ShowDetailsPage from "../features/showDetails/ShowDetails.page";
 
