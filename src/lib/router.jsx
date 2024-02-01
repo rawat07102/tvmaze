@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
-import HomePage from "../features/home/Home.page"
+import HomePage from "../features/home/HomePage"
 import axios from "axios";
-import ShowDetailsPage from "../features/showDetails/ShowDetails.page";
+import ShowDetailsPage from "../features/showDetails/ShowDetailsPage";
 
 async function loadShows() {
   const res = await axios.get("https://api.tvmaze.com/search/shows?q=all");

@@ -1,14 +1,10 @@
 import { TextField } from "./TextField";
 
-export default function BookTicketModal({ name, open, close }) {
-  if (!open) {
-    return null;
-  }
-
+export default function BookTicketModal({ showName, close }) {
   return (
     <div className="flex justify-center items-center absolute top-0 left-0 w-screen h-screen bg-opacity-50 bg-black">
       <form className="flex flex-col bg-black p-8 rounded gap-4 w-[400px]">
-        <TextField label="Name" name="movie-name" value={name} />
+        <TextField label="Name" name="movie-name" value={showName} />
         <TextField
           label="Number of Tickets"
           name="ticket-count"

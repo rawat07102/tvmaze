@@ -8,6 +8,7 @@ export function TextField(props) {
         name={name}
         className="bg-inherit text-white outline outline-0 py-2.5 px-3 rounded-full border border-primary-500 w-full h-full peer focus:border-accent-300 valid:border-accent-300"
         id={id}
+        value={value}
         {...rest}
       />
       <label

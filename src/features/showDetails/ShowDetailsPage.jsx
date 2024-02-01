@@ -1,25 +1,28 @@
-import React from "react"
+import React from "react";
 import { useLoaderData } from "react-router-dom";
-import { extractSummary } from "../../lib/utils";
-import BookTicketModal from "./BookTicket.modal";
+import BookTicketModal from "./BookTicketModal";
 
 export default function ShowDetailsPage() {
   const show = useLoaderData();
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState(false);
 
   return (
     <main className="bg-gray-50 h-screen w-screen relative">
       <div className="w-full h-full overflow-hidden relative">
         <div className="flex gap-8 flex-col items-center w-full h-full bg-black bg-opacity-90 p-8 absolute top-0 left-0">
-          <p className="text-gray-100">
+          <div className="flex flex-col gap-4 text-gray-100">
             <h1 className="font-semibold inline text-6xl text-yellow-500">
               {show.name}
             </h1>
-            <span className="text-lg">{extractSummary(show.summary)}</span>
-          </p>
-          <button 
+            <span
+              className="text-lg summary"
+              dangerouslySetInnerHTML={{ __html: show.summary }}
+            ></span>
+          </div>
+          <button
             onClick={() => setOpen(true)}
-            className="p-2 hover:bg-yellow-400 bg-yellow-500 font-bold uppercase text-lg rounded transition-all duration-300 hover:shadow-lg hover:shadow-yellow-950">
+            className="p-2 hover:bg-yellow-400 bg-yellow-500 font-bold uppercase text-lg rounded transition-all duration-300 hover:shadow-lg hover:shadow-yellow-950"
+          >
             Book Ticket
           </button>
         </div>
@@ -30,7 +33,13 @@ export default function ShowDetailsPage() {
           src={show.image?.original}
         />
       </div>
-      <BookTicketModal open={open} close={() => setOpen(false)} name={show.name} />
+      {open && (
+        <BookTicketModal
+          open={open}
+          close={() => setOpen(false)}
+          showName={show.name}
+        />
+      )}
     </main>
   );
 }
